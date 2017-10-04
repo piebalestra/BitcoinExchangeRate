@@ -3,6 +3,11 @@
 
 #include <QMainWindow>
 #include <QTimer>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QLineEdit>
+#include <QDateTime>
+#include <QString>
 
 #include "mynetwork.h"
 
@@ -17,9 +22,13 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QString title, QString url, int update, QWidget *parent = 0);
     ~MainWindow();
-    \
+
 private slots:
      void makeRequest();
+     void retrieveRequest(QByteArray data);
+
+private:
+     void parseJson(QString data, QString field1, QString field2);
 
 private:
     Ui::MainWindow *ui;
