@@ -26,6 +26,7 @@ public:
 private slots:
      void makeRequest();
      void retrieveRequest(QByteArray data);
+     void updateValues();
 
 private:
      void parseJson(QString data, QString field1, QString field2);
