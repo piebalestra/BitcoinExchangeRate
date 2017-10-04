@@ -1,15 +1,15 @@
-#ifndef MYNETWORK_H
-#define MYNETWORK_H
+#ifndef NETWORK_H
+#define NETWORK_H
 
 #include <QObject>
 #include <QtNetwork/QNetworkAccessManager>
 #include <QNetworkReply>
 
-class MyNetwork : public QObject
+class Network : public QObject
 {
     Q_OBJECT
 public:
-    explicit MyNetwork(QObject *parent = 0);
+    explicit Network(QObject *parent = 0);
     void makeRequest(QString endPointRequest);
 
 signals:

@@ -9,7 +9,7 @@
 #include <QDateTime>
 #include <QString>
 
-#include "mynetwork.h"
+#include "network.h"
 
 namespace Ui {
 class MainWindow;
@@ -24,16 +24,20 @@ public:
     ~MainWindow();
 
 private slots:
+     // Request method GET
      void makeRequest();
+     // Retrieve result from GET.
      void retrieveRequest(QByteArray data);
+     // Refresh the value in the euro box when it's changed in the bitcoin box.
      void updateValues();
 
 private:
-     void parseJson(QString data, QString field1, QString field2);
+     // Update the value of the two keys
+     void parseJson(QString data, QString key1, QString key2);
 
 private:
     Ui::MainWindow *ui;
-    MyNetwork net;
+    Network net;
     QTimer *timer;
     QString url;
     int update;

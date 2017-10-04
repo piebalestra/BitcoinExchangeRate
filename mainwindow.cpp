@@ -17,14 +17,13 @@ MainWindow::MainWindow(QString title, QString url, int update,QWidget *parent) :
     // lineEditEuro read only.
     ui->lineEditEuro->setReadOnly(true);
 
-    // Retrieve response from url.
+    // Retrieve result from GET.
     connect(&net, SIGNAL(retrieveRequestBind(QByteArray)), this, SLOT(retrieveRequest(QByteArray)));
 
-    // Update values with current exchange every time the text in lineEditBitcoin changed.
-    QLineEdit *edit = ui->lineEditBitcoin;
-    connect(edit, SIGNAL(textChanged(QString)), this, SLOT(updateValues()));
+    // Refresh the value in the euro box when it's changed in the bitcoin box.
+    connect(ui->lineEditBitcoin, SIGNAL(textChanged(QString)), this, SLOT(updateValues()));
 
-    // Invoke makeRequest every update ms.
+    // Repat request method GET at fixed interval.
     timer = new QTimer(this);
     makeRequest();
     connect(timer, SIGNAL(timeout()), this, SLOT(makeRequest()));
@@ -49,12 +48,12 @@ void MainWindow::retrieveRequest(QByteArray data)
 
 }
 
-void MainWindow::parseJson(QString data, QString field1, QString field2)
+void MainWindow::parseJson(QString data, QString key1, QString key2)
 {
     QJsonDocument jsonResponse = QJsonDocument::fromJson(data.toUtf8());
     QJsonObject jsonObject = jsonResponse.object();
-    exchangeRate = jsonObject[field1].toString().toDouble();
-    timestamp.setTime_t(jsonObject[field2].toString().toLong());;
+    exchangeRate = jsonObject[key1].toString().toDouble();
+    timestamp.setTime_t(jsonObject[key2].toString().toLong());;
 }
 
 void MainWindow::updateValues()
