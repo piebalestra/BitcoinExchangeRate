@@ -1,10 +1,10 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2017-10-04T18:27:49
+# Project created by QtCreator 2017-10-04T19:18:15
 #
 #-------------------------------------------------
-
-QT       += core gui
+# Added network param
+QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -24,10 +24,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp\
-        exchangeratewindow.cpp \
+        mainwindow.cpp \
     mynetwork.cpp
 
-HEADERS  += exchangeratewindow.h \
+HEADERS  += mainwindow.h \
     mynetwork.h
 
-FORMS    += exchangeratewindow.ui
+FORMS    += mainwindow.ui
