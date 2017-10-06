@@ -38,7 +38,6 @@ MainWindow::~MainWindow()
 void MainWindow::makeRequest()
 {
     net.makeRequest(url);
-    updateValues();
 }
 
 void MainWindow::retrieveRequest(QByteArray data)
