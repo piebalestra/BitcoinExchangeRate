@@ -44,7 +44,6 @@ void MainWindow::retrieveRequest(QByteArray data)
 {
     parseJson(data, "last", "timestamp");
     updateValues();
-
 }
 
 void MainWindow::parseJson(QString data, QString key1, QString key2)
